@@ -23,10 +23,21 @@ public class EntrepriseOuEtudiant extends AppCompatActivity {
                 etudiantlaunch();
             }
         });
+        entreprise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                entrepriselaunch();
+            }
+        });
     }
 
     public void etudiantlaunch() {
         Intent intent = new Intent(this, RegistersActivity.class);
+        startActivity(intent);
+    }
+
+    public void entrepriselaunch() {
+        Intent intent = new Intent(this, RegisterEntrepriseActivity.class);
         startActivity(intent);
     }
 }

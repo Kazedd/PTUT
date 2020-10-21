@@ -28,13 +28,11 @@
                     android:id="@+id/seekBar"
                     android:layout_width="355dp"
                     android:layout_height="19dp"
-                    android:layout_marginBottom="116dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintHorizontal_bias="0.327"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/parametreView"
-                    app:layout_constraintVertical_bias="0.984" />
+                    app:layout_constraintTop_toBottomOf="@+id/button5" />
 
                 <Button
                     android:id="@+id/button5"
@@ -43,22 +41,21 @@
                     android:text="Lettre de motivation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.904"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.774" />
+                    app:layout_constraintHorizontal_bias="0.606"
+                    app:layout_constraintStart_toEndOf="@+id/button4"
+                    app:layout_constraintTop_toBottomOf="@+id/age"
+                    app:layout_constraintVertical_bias="0.31" />
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CV"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/seekBar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.132"
+                    app:layout_constraintHorizontal_bias="0.148"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.773" />
+                    app:layout_constraintTop_toBottomOf="@+id/age" />
 
                 <TextView
                     android:id="@+id/parametreView"
@@ -84,8 +81,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.928"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.951" />
+                    app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
                 <EditText
                     android:id="@+id/nom"
