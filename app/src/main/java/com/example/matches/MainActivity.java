@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public TextView register;
 
     public void startregister() {
-        Intent intent = new Intent(this, RegistersActivity.class);
+        Intent intent = new Intent(this, EntrepriseOuEtudiant.class);
         startActivity(intent);
     }
 
