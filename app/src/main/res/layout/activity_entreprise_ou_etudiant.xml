@@ -8,8 +8,9 @@
 
     <Button
         android:id="@+id/Entreprise"
-        android:layout_width="229dp"
-        android:layout_height="54dp"
+        android:layout_width="251dp"
+        android:layout_height="52dp"
+        android:background="@drawable/custombutton"
         android:fontFamily="sans-serif-medium"
         android:text="Entreprise"
         android:textSize="24sp"
@@ -22,8 +23,9 @@
 
     <Button
         android:id="@+id/Etudiant"
-        android:layout_width="229dp"
-        android:layout_height="54dp"
+        android:layout_width="256dp"
+        android:layout_height="51dp"
+        android:background="@drawable/custombutton"
         android:fontFamily="sans-serif-medium"
         android:text="Etudiant"
         android:textSize="24sp"

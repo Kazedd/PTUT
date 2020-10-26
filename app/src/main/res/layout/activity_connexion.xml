@@ -72,8 +72,9 @@
 
                 <Button
                     android:id="@+id/validationConnexionButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="106dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/custombutton"
                     android:text="CONNEXION"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
