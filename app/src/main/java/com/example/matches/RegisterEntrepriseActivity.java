@@ -93,7 +93,7 @@ public class RegisterEntrepriseActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisterEntrepriseActivity.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = firebaseAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = firestore.collection("users").document(userID);
+                            DocumentReference documentReference = firestore.collection("entreprise").document(userID);
                             Map<String, Object> user = new HashMap<>();
                             user.put("nom_entreprise", nom2);
                             user.put("prenom_entreprise", prenom2);
