@@ -42,23 +42,24 @@
                     android:text="Lettre de motivation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.606"
+                    app:layout_constraintHorizontal_bias="0.67"
                     app:layout_constraintStart_toEndOf="@+id/button4"
                     app:layout_constraintTop_toBottomOf="@+id/age"
-                    app:layout_constraintVertical_bias="0.31" />
+                    app:layout_constraintVertical_bias="0.448" />
+
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/custombutton"
                     android:text="CV"
                     app:layout_constraintBottom_toTopOf="@+id/seekBar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.148"
+                    app:layout_constraintHorizontal_bias="0.14"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@drawable/custombutton"
-                    app:layout_constraintTop_toBottomOf="@+id/age" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/age"
+                    app:layout_constraintVertical_bias="0.645" />
 
                 <TextView
                     android:id="@+id/parametreView"
@@ -157,6 +158,20 @@
                     app:layout_constraintHorizontal_bias="0.119"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/adresse" />
+
+                <EditText
+                    android:id="@+id/desc"
+                    android:layout_width="369dp"
+                    android:layout_height="248dp"
+                    android:layout_marginTop="24dp"
+                    android:hint="description :\nBonjour,je me présente je suis Adrien LANDEMAINE je suis étudiant en deuxième année d\'IUT informatique à Laval et je cherche un stage de fin d\'étude en développement informatique d\'une durée minimale de 11 semaines je me permets de vous contacter afin de vous proposer une candidature libre au travers de mon C\.V\. et d\'une lettre de motivation"
+                    app:boxBackgroundMode="none"
+                    app:layout_constraintBottom_toTopOf="@+id/button4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.593"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/age"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <EditText
                     android:id="@+id/prenomE"

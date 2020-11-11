@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegistersActivity extends AppCompatActivity {
-    EditText nom, prenom, adresseMail, motDePasse, telephone, adresse, age;
+    EditText nom, prenom, adresseMail, motDePasse, telephone, adresse, age, description;
     Button register, photo;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -53,6 +53,7 @@ public class RegistersActivity extends AppCompatActivity {
         age = (EditText) findViewById(R.id.age);
         register = (Button) findViewById(R.id.register);
         imagePhoto = (ImageView) findViewById(R.id.imagePhoto);
+        description = (EditText) findViewById(R.id.desc);
         ((Button) findViewById(R.id.photo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +73,7 @@ public class RegistersActivity extends AppCompatActivity {
                 final String tel = telephone.getText().toString().trim();
                 final String adres = adresse.getText().toString().trim();
                 final String age2 = age.getText().toString().trim();
+                final String description2 = description.getText().toString().trim();
 
                 /*if(firebaseAuth.getCurrentUser() !=null){
                     startActivity(new Intent(getApplicationContext(),matchActivity.class));
@@ -106,6 +108,10 @@ public class RegistersActivity extends AppCompatActivity {
                     age.setError("Age is required");
                     return;
                 }
+                if (TextUtils.isEmpty(description2)) {
+                    age.setError("you need to add a description");
+                    return;
+                }
 
 
                 if (motDP.length() < 6) {
@@ -128,6 +134,7 @@ public class RegistersActivity extends AppCompatActivity {
                             user.put("telephone_etudiant", tel);
                             user.put("adresse_etudiant", adres);
                             user.put("age_etudiant", age2);
+                            user.put("description_etudiant", description2);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
