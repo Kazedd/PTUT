@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,11 +14,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +40,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistersActivity extends AppCompatActivity {
+public class RegistersActivity extends AppCompatActivity implements OnMapReadyCallback {
     EditText nom, prenom, adresseMail, motDePasse, telephone, adresse, age, description;
     Button register, photo;
     FirebaseAuth firebaseAuth;
@@ -38,6 +48,12 @@ public class RegistersActivity extends AppCompatActivity {
     String userID;
     final static int SELECT_PICTURE = 1;
     ImageView imagePhoto;
+    MapView mapView;
+    SeekBar distanceSeekBar;
+    Circle circle;
+    private GoogleMap gMap;
+
+    private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +70,8 @@ public class RegistersActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.register);
         imagePhoto = (ImageView) findViewById(R.id.imagePhoto);
         description = (EditText) findViewById(R.id.desc);
+        mapView = (MapView) findViewById(R.id.mapView);
+        distanceSeekBar = (SeekBar) findViewById(R.id.distanceSeekBar);
         ((Button) findViewById(R.id.photo)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +174,38 @@ public class RegistersActivity extends AppCompatActivity {
                 });
             }
         });
+
+        int maxValue = distanceSeekBar.getMax();
+
+        distanceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                progressChangedValue = i;
+                circle.setRadius(progressChangedValue);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+
+            }
+        });
+
+        Bundle mapViewBundle = null;
+        if (savedInstanceState != null){
+            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
+        }
+
+        mapView = (MapView) findViewById(R.id.mapView);
+        mapView.onCreate(mapViewBundle);
+        mapView.getMapAsync( this);
+
     }
     public void btGalleryClick(View v) {
         //Création puis ouverture de la boite de dialogue
@@ -198,5 +248,61 @@ public class RegistersActivity extends AppCompatActivity {
     public void startregister2() {
         Intent intent = new Intent(this, matchActivity.class);
         startActivity(intent);
+    }
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Bundle mapViewBundle = outState.getBundle(MAP_VIEW_BUNDLE_KEY);
+        if (mapViewBundle == null){
+            mapViewBundle = new Bundle();
+            outState.putBundle(MAP_VIEW_BUNDLE_KEY, mapViewBundle);
+        }
+
+        mapView.onSaveInstanceState(mapViewBundle);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        mapView.onPause();
+        super.onPause();
+    }
+    @Override
+    protected void onDestroy() {
+        mapView.onDestroy();
+        super.onDestroy();
+    }
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        gMap = googleMap;
+        gMap.setMinZoomPreference(12);
+        LatLng me = new LatLng(40.7143528, -74.0059731);
+        gMap.moveCamera(CameraUpdateFactory.newLatLng(me));
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(me);
+        gMap.addMarker(markerOptions);
+
+        circle = gMap.addCircle(new CircleOptions().center(new LatLng(me.latitude,me.longitude)).strokeColor(Color.RED));
+
     }
 }

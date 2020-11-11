@@ -25,14 +25,17 @@
 
 
                 <SeekBar
-                    android:id="@+id/seekBar"
+                    android:id="@+id/distanceSeekBar"
                     android:layout_width="355dp"
                     android:layout_height="19dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.327"
+                    app:layout_constraintHorizontal_bias="0.361"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+                    app:layout_constraintTop_toBottomOf="@+id/mapView"
+                    app:layout_constraintVertical_bias="0.094"
+                    android:max="5000"
+                    android:progress="100"/>
 
                 <Button
                     android:id="@+id/button5"
@@ -42,11 +45,10 @@
                     android:text="Lettre de motivation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.67"
+                    app:layout_constraintHorizontal_bias="0.884"
                     app:layout_constraintStart_toEndOf="@+id/button4"
                     app:layout_constraintTop_toBottomOf="@+id/age"
-                    app:layout_constraintVertical_bias="0.448" />
-
+                    app:layout_constraintVertical_bias="0.397" />
 
                 <Button
                     android:id="@+id/button4"
@@ -54,12 +56,12 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/custombutton"
                     android:text="CV"
-                    app:layout_constraintBottom_toTopOf="@+id/seekBar"
+                    app:layout_constraintBottom_toTopOf="@+id/distanceSeekBar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.14"
+                    app:layout_constraintHorizontal_bias="0.171"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/age"
-                    app:layout_constraintVertical_bias="0.645" />
+                    app:layout_constraintVertical_bias="0.424" />
 
                 <TextView
                     android:id="@+id/parametreView"
@@ -85,7 +87,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.928"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+                    app:layout_constraintTop_toBottomOf="@+id/distanceSeekBar" />
 
                 <EditText
                     android:id="@+id/nom"
@@ -168,10 +170,10 @@
                     app:boxBackgroundMode="none"
                     app:layout_constraintBottom_toTopOf="@+id/button4"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.593"
+                    app:layout_constraintHorizontal_bias="0.59"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/age"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <EditText
                     android:id="@+id/prenomE"
@@ -203,6 +205,16 @@
                     app:layout_constraintStart_toEndOf="@+id/photo"
                     app:layout_constraintTop_toBottomOf="@+id/parametreView"
                     tools:srcCompat="@tools:sample/avatars" />
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="279dp"
+                    android:layout_height="248dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
